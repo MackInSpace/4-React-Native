@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ScrollView, Text } from "react-native";
 import { Avatar, Card, ListItem } from "react-native-elements";
 import { PARTNERS } from "../shared/partners"; 
