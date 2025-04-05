@@ -4,6 +4,7 @@ import RenderCampsite from '../features/campsites/RenderCampsite';
 import { toggleFavorite } from '../features/favorites/favoritesSlice';
 import { useState } from 'react';
 import { Rating, Input } from 'react-native-elements';
+import { postComment } from '../features/comments/commentsSlice';
 
 const CampsiteInfoScreen = ({ route }) => {
     const { campsite } = route.params;
@@ -23,7 +24,7 @@ const CampsiteInfoScreen = ({ route }) => {
             campsiteId: campsite.id
         };
 
-        console.log(newComment);
+        dispatch(postComment(newComment));
         setShowModal(!showModal);
         resetForm();
         };
@@ -90,7 +91,7 @@ const CampsiteInfoScreen = ({ route }) => {
                         style={{ paddingVertical: 10 }}
                     />
                     <View style={{ margin: 10 }}>
-                        <TextInput
+                        <Input
                             placeholder='Your Name'
                             leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                             leftIconContainerStyle={{ paddingRight: 10 }}
@@ -98,8 +99,8 @@ const CampsiteInfoScreen = ({ route }) => {
                             onChangeText={(text) => setAuthor(text)}
                             style={styles.input}
                         >   
-                        </TextInput>
-                        <TextInput
+                        </Input>
+                        <Input
                             placeholder='Write a Comment'
                             leftIcon={{ type: 'font-awesome', name: 'comment-o' }}
                             leftIconContainerStyle={{ paddingRight: 10 }}
@@ -107,7 +108,7 @@ const CampsiteInfoScreen = ({ route }) => {
                             onChangeText={(text) => setText(text)}
                             style={styles.input}
                         >
-                        </TextInput>
+                        </Input>
                         <Button 
                             title='Submit' 
                             color='#5637DD'
