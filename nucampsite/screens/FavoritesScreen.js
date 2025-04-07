@@ -5,7 +5,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Alert
+  Alert,
 } from "react-native";
 import { SwipeRow } from "react-native-swipe-list-view";
 import { toggleFavorite } from "../features/favorites/favoritesSlice";
@@ -26,21 +26,26 @@ const FavoritesScreen = ({ navigation }) => {
         <View style={styles.deleteView}>
           <TouchableOpacity
             style={styles.deleteTouchable}
-            onPress={() => Alert.alert('Delete Favorite?',
-              'Are you sure you wish to delete the favorite campsite?', + campsite.name + '?',
-              [
-                {
-                  text: 'Cancel',
-                  onPress: () => console.log(campsite.name + 'Not Deleted'),
-                  style: 'cancel'
-                },
-                {
-                  text: 'OK',
-                  onPress: () => dispatch(toggleFavorite(campsite.id))
-                }
-              ],
-              { cancelable: false }
-            )}
+            onPress={() =>
+              Alert.alert(
+                "Delete Favorite?",
+                "Are you sure you wish to delete the favorite campsite " +
+                  campsite.name +
+                  "?",
+                [
+                  {
+                    text: "Cancel",
+                    onPress: () => console.log(campsite.name + "Not Deleted"),
+                    style: "cancel",
+                  },
+                  {
+                    text: "OK",
+                    onPress: () => dispatch(toggleFavorite(campsite.id)),
+                  },
+                ],
+                { cancelable: false }
+              )
+            }
           >
             <Text style={styles.deleteText}>Delete</Text>
           </TouchableOpacity>
