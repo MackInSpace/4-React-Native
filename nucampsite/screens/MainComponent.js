@@ -125,7 +125,6 @@ const ReservationNavigator = () => {
 
 const FavoritesNavigator = () => {
   const Stack = createStackNavigator();
-
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
@@ -268,7 +267,7 @@ const Main = () => {
           }}
         />
         <Drawer.Screen
-          name="Favorites"
+          name="FavoritesNav"
           component={FavoritesNavigator}
           options={{
             title: "My Favorites",
