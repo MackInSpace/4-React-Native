@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { View, Button, StyleSheet } from "react-native";
-import { CheckBox, Input } from "react-native-elements";
-import * as SecureStore from "expo-secure-store";
+import { useEffect, useState } from 'react';
+import { View, Button, StyleSheet } from 'react-native';
+import { CheckBox, Input } from 'react-native-elements';
+import * as SecureStore from 'expo-secure-store';
 
 const LoginScreen = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
 
     const handleLogin = () => {
@@ -21,7 +21,7 @@ const LoginScreen = () => {
                 })
             ).catch((error) => console.log('Could not save user info', error));
         } else {
-            SecureStore.deleteItemAsync('userinfo').catch((error) => 
+            SecureStore.deleteItemAsync('userinfo').catch((error) =>
                 console.log('Could not delete user info', error)
             );
         }
@@ -40,23 +40,23 @@ const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Input 
+            <Input
                 placeholder='Username'
                 leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-                onChange={(text) => setUsername(text)}
+                onChangeText={(text) => setUsername(text)}
                 value={username}
                 containerStyle={styles.formInput}
                 leftIconContainerStyle={styles.formIcon}
             />
-            <Input 
+            <Input
                 placeholder='Password'
                 leftIcon={{ type: 'font-awesome', name: 'key' }}
-                onChange={(text) => setPassword(text)}
+                onChangeText={(text) => setPassword(text)}
                 value={password}
                 containerStyle={styles.formInput}
                 leftIconContainerStyle={styles.formIcon}
             />
-            <CheckBox 
+            <CheckBox
                 title='Remember Me'
                 center
                 checked={remember}
@@ -64,7 +64,7 @@ const LoginScreen = () => {
                 containerStyle={styles.formCheckbox}
             />
             <View style={styles.formButton}>
-                <Button 
+                <Button
                     onPress={() => handleLogin()}
                     title='Login'
                     color='#5637DD'
